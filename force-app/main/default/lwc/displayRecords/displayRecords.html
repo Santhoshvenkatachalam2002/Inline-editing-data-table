@@ -1,0 +1,29 @@
+<!--
+  @description       : 
+  @author            : Santhosh V
+  @group             : 
+  @last modified on  : 02-15-2023
+  @last modified by  : Santhosh V
+-->
+<template>
+     <c-show-object-details onfieldnames={customeventhandler} oncleardata={handlecleartable}></c-show-object-details>
+    <!-- <lightning-button variant="destructive" label="clear" title="Primary action" onclick={handleclearButtonClick}></lightning-button>-->
+     <div if:true={bool}>
+  <lightning-card title="Records">
+    <lightning-layout multiple-rows="true">
+      <lightning-layout-item size="12">
+    <lightning-datatable class="slds-max-medium-table_stacked"
+                key-field="Id"
+                data={recorddata}
+                columns={columns}
+                onsave={handleSave}
+                draft-values={draftValues}>
+        </lightning-datatable>
+      </lightning-layout-item>
+      <div class="slds-align_absolute-center">
+          <c-pagination-for-data-table totalpage={totalPages} oncurrentpagenumbernext={PageNumberhandlerNext} oncurrentpagenumberprevious={PageNumberhandlerprevious}></c-pagination-for-data-table>
+        </div>
+    </lightning-layout>
+  </lightning-card> 
+</div>
+</template>

@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : Santhosh V
+  @group             : 
+  @last modified on  : 02-16-2023
+  @last modified by  : Santhosh V
+-->
+<template>
+    <lightning-layout>
+    <lightning-layout-item >
+        <lightning-button  label="Previous" 
+        icon-name="utility:chevronleft"
+        onclick={previousHandler}
+        disabled={disablePrevious}></lightning-button>
+    </lightning-layout-item>
+    <lightning-layout-item class="slds-m-left_small slds-text-title_bold" >
+        <p>Displaying {currentPage} of {Pages} Pages</p>
+    </lightning-layout-item>
+   <lightning-layout-item  class="slds-m-left_small">
+        <lightning-button   label="Next" 
+        icon-name="utility:chevronright"
+        onclick={nextHandler}
+        disabled={disableNext}></lightning-button>
+    </lightning-layout-item>
+    </lightning-layout>
+
+</template>

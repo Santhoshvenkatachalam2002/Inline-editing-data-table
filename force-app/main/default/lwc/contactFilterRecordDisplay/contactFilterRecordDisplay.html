@@ -1,0 +1,18 @@
+<!--
+  @description       : 
+  @author            : Santhosh V
+  @group             : 
+  @last modified on  : 02-06-2023
+  @last modified by  : Santhosh V
+-->
+<template>
+    <lightning-card title='Data'>
+    <lightning-datatable
+            key-field="Id"
+            data={RecordData}
+            columns={RecordColumn}
+            onsave={handleSave}
+            draft-values={draftValues}>
+        </lightning-datatable>
+    </lightning-card>
+</template>

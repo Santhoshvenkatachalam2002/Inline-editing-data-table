@@ -1,0 +1,30 @@
+<!--
+  @description       : 
+  @author            : Santhosh V
+  @group             : 
+  @last modified on  : 01-09-2023
+  @last modified by  : Santhosh V
+-->
+<template>
+    <lightning-card title="Filter Contact Record">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="12">
+                <lightning-input type="text" onchange={ContactNameHandler} label="Enter Name"></lightning-input>
+            </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <template if:true={industryValue.data}>
+                <lightning-combobox name="Industry" label="Industry" value={value} 
+                    options={industryValue.data.values} onchange={handleInustryChange}>
+                </lightning-combobox>
+            </template></lightning-layout-item>
+            <lightning-layout-item size="12">
+                <template if:true={typeValue.data}>
+                    <lightning-combobox name="Type" label="Type" value={value} 
+                        options={typeValue.data.values} onchange={handleTypeChange}>
+                    </lightning-combobox>
+                </template></lightning-layout-item>
+        </lightning-layout>
+        <C-Contact-Filter-Record-Display></C-Contact-Filter-Record-Display>
+    </lightning-card>
+    
+</template>
