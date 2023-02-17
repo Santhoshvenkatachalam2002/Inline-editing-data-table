@@ -50,7 +50,7 @@ recordSplit()
   const start = (this.currentPageNumber-1)*this.recordsize;
   const end = this.recordsize*this.currentPageNumber;
   this.recorddata= this.totalrecords.slice(start, end);
-  this.recorddatasize=this.recorddata.size();
+  this.recorddatasize=this.recorddata.length;
   console.log("record After slice:" + this.recorddata);
 }
 
