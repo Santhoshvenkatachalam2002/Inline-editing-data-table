@@ -2,7 +2,7 @@
   @description       : 
   @author            : Santhosh V
   @group             : 
-  @last modified on  : 02-15-2023
+  @last modified on  : 02-17-2023
   @last modified by  : Santhosh V
 -->
 <template>
@@ -20,7 +20,10 @@
                 draft-values={draftValues}>
         </lightning-datatable>
       </lightning-layout-item>
-      <div class="slds-align_absolute-center">
+      <div>
+        Record Count:{recorddatasize}
+      </div>
+      <div class="slds-m-top_large slds-align_absolute-center">
           <c-pagination-for-data-table totalpage={totalPages} oncurrentpagenumbernext={PageNumberhandlerNext} oncurrentpagenumberprevious={PageNumberhandlerprevious}></c-pagination-for-data-table>
         </div>
     </lightning-layout>

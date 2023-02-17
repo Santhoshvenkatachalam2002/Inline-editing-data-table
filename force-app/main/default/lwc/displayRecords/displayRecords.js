@@ -19,6 +19,7 @@ export default class DisplayRecords extends LightningElement {
     @track currentPageNumber=1;//this data comes via custom event 
     @track totalrecords;//to store data temporarily before slicing 
     @track pnDisplay=true;
+    @track recorddatasize;
 
 
 /*@wire(getRecords, { fieldName:'$fieldNamesforQuery',objectName:'$objName',condition:'$usercondition' })
@@ -49,6 +50,7 @@ recordSplit()
   const start = (this.currentPageNumber-1)*this.recordsize;
   const end = this.recordsize*this.currentPageNumber;
   this.recorddata= this.totalrecords.slice(start, end);
+  this.recorddatasize=this.recorddata.size();
   console.log("record After slice:" + this.recorddata);
 }
 
