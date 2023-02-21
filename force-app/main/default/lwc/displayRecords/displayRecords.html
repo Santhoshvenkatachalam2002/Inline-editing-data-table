@@ -2,7 +2,7 @@
   @description       : 
   @author            : Santhosh V
   @group             : 
-  @last modified on  : 02-17-2023
+  @last modified on  : 02-21-2023
   @last modified by  : Santhosh V
 -->
 <template>
@@ -11,6 +11,10 @@
      <div if:true={bool}>
   <lightning-card title="Records">
     <lightning-layout multiple-rows="true">
+      <lightning-layout-item size="12" class=" slds-p-around_medium">
+        <lightning-combobox class="slds-float_right slds-text-title_bold" name="DataEntries" label="Data-Entry" placeholder="5" value={selectedDataEntryOptions} 
+        onchange={handleDataEntryCLick}  options={dataEntryoptions} ></lightning-combobox>  
+    </lightning-layout-item>
       <lightning-layout-item size="12">
     <lightning-datatable class="slds-max-medium-table_stacked"
                 key-field="Id"
@@ -20,9 +24,9 @@
                 draft-values={draftValues}>
         </lightning-datatable>
       </lightning-layout-item>
-      <div class="slds-text-title_bold">
+    <!--  <div class="slds-text-title_bold">
         <p>Record Count:{recorddatasize}</p>
-      </div>
+      </div>-->
       <div class="slds-m-top_large slds-align_absolute-center">
           <c-pagination-for-data-table totalpage={totalPages} oncurrentpagenumbernext={PageNumberhandlerNext} oncurrentpagenumberprevious={PageNumberhandlerprevious}></c-pagination-for-data-table>
         </div>

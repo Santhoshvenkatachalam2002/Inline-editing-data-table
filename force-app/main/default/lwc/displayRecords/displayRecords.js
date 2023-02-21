@@ -14,13 +14,14 @@ export default class DisplayRecords extends LightningElement {
     @track fieldNamesforQuery=[];
     @track usercondition;
     @track draftValues=[];
-    @track recordsize=5;//this is the size of the data to dispaly for each column
+   // @track recordsize=5;//this is the size of the data to dispaly for each column
     @track totalPages;//this stores total pages when divided by total records/record size
     @track currentPageNumber=1;//this data comes via custom event 
     @track totalrecords;//to store data temporarily before slicing 
     @track pnDisplay=true;
     @track recorddatasize;
-
+    @track dataEntryoptions=[{label:'5',value:'5'},{label:'10',value:'10'},{label:'50',value:'50'}];
+    @track selectedDataEntryOptions=5;
 
 /*@wire(getRecords, { fieldName:'$fieldNamesforQuery',objectName:'$objName',condition:'$usercondition' })
 getRecordsFrombackend({data,error})
@@ -45,14 +46,24 @@ this.showtoast('error', 'error.body.message', 'error');
 }
 }*/
 
-recordSplit()
+
+recordSplit(num)
 {
-  const start = (this.currentPageNumber-1)*this.recordsize;
-  const end = this.recordsize*this.currentPageNumber;
+  if(num)
+  {
+    this.currentPageNumber=num;
+  }
+  console.log('recordsplit');
+  //this.totalrecords=data;
+  this.totalPages = Math.ceil(this.totalrecords.length/this.selectedDataEntryOptions);
+    console.log("AfterMathSeil" + this.totalPages);
+  const start = (this.currentPageNumber-1)*this.selectedDataEntryOptions;
+  const end = this.selectedDataEntryOptions*this.currentPageNumber;
   this.recorddata= this.totalrecords.slice(start, end);
   this.recorddatasize=this.recorddata.length;
   console.log("record After slice:" + this.recorddata);
 }
+
 
 
 PageNumberhandlerprevious(event)
@@ -112,6 +123,13 @@ PageNumberhandlerNext(event)
         //this.columns=[];
     }
 
+    handleDataEntryCLick(event)
+    {
+      this.selectedDataEntryOptions=event.detail.value;
+      console.log(this.selectedDataEntryOptions);
+      this.recordSplit(1);
+    }
+
     customeventhandler(event)
     {
       
@@ -128,9 +146,7 @@ PageNumberhandlerNext(event)
     console.log('++entered++')
     console.log(data);
     this.totalrecords=data;
-    this.totalPages = Math.ceil(data.length/this.recordsize);
-    console.log("AfterMathSeil" + this.totalPages);
-    this.currentPageNumber=1;
+    
     this.recordSplit();
     //this.totalPageHandler();
     //this.recorddata=data;
